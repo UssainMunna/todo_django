@@ -27,6 +27,12 @@ def delete_todo(request, id):
     Todo.objects.get(pk=id).delete()
     return redirect('home')
 
+def mark_todo_at(requests,id,status):
+    todo = Todo.objects.get(pk = id)
+    todo.status = status
+    todo.save()
+    return redirect('at')
+
 def delete_todo_cmpt(request,id):
     Todo.objects.get(pk=id).delete()
     return redirect('cmpt')
